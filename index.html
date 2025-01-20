@@ -22,6 +22,7 @@
             </button>
         </div>
     </nav>
+
     <ul class="list-group">
         <li class="list-group-item">An item</li>
         <li class="list-group-item">A second item</li>
@@ -35,14 +36,36 @@
             <h4>로그인하세요</h4>
             <button class="btn btn-danger" id="close" onclick="document.getElementsByClassName().style.display = 'none'">닫기</button>
         </div>
-    </div> 
+    </div>
 
-    <p class="hello">안녕</p>
+    <button id="login">로그인</button>
 
     <div class="alert-box" id="alert">알림창임</div>
     <button onclick="document.getElementById('alert').style.display = 'block'">버튼</button>
 
+    <form action="success.html">
+        <div class="my-3">
+            <input id="email" type="text" class="form-control">
+        </div>
+        <div class="my-3">
+            <input id="password" type="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">전송</button>
+        <button type="button" class="btn btn-danger" id="close">닫기</button>
+    </form>
+
     <script>
+        $('#login').on('click', function(){
+            $('.black-bg').addClass('show-modal');
+        });
+
+        $('form').on('submit', function(e) {
+            if (document.getElementById('email').value == '') {
+                e.preventDefault();
+                alert('아이디를 입력하세요');
+            }
+        })
+
         document.getElementsById('close')[0].addEventListener('click', function(){
             document.getElementsByClassName('black-bg')[0].classList.toggle('show')
         })
@@ -50,8 +73,6 @@
         document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', function(){
             document.getElementsByClassName('list-group')[0].classList.toggle('show')
         })
-
-        $('.hello').css('color', 'red');
     </script>
 </body>
 </html>
