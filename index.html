@@ -83,7 +83,7 @@
             console.log('안녕')
         });
 
-        document.getElementById('close')[0].addEventListener('click', function(){
+        document.getElementById('close').addEventListener('click', function(){
             document.getElementsByClassName('black-bg')[0].classList.toggle('show')
         })
 
@@ -91,7 +91,17 @@
             document.getElementsByClassName('list-group')[0].classList.toggle('show')
         })
 
-        
+        function 삼육구 (num) {
+            if (num % 9 == 0) {
+                console.log('박수x2')
+            }
+            else if (num % 3 == 0) {
+                console.log('박수')
+            }
+            else console.log('통과')
+        }
+
+        삼육구(9);
     </script>
 </body>
 </html>
