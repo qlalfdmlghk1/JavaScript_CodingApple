@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
-<body>
+<input>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand">Navbar</span> 
@@ -54,6 +54,10 @@
         <button type="button" class="btn btn-danger" id="close">닫기</button>
     </form>
 
+    <div>
+        <input id="삼육구" type="number">
+    </div>
+
     <script>
         $('#login').on('click', function(){
             $('.black-bg').addClass('show-modal');
@@ -66,13 +70,28 @@
             }
         })
 
-        document.getElementsById('close')[0].addEventListener('click', function(){
+        document.getElementById('삼육구').addEventListener('input', function(number) {
+            if (number % 3 == 0) console.log("박수")
+            else console.log("통과")
+        })
+
+        document.getElementById('email').addEventListener('input', function(){
+            console.log('안녕')
+        });
+
+        document.getElementById('email').addEventListener('change', function(){
+            console.log('안녕')
+        });
+
+        document.getElementById('close')[0].addEventListener('click', function(){
             document.getElementsByClassName('black-bg')[0].classList.toggle('show')
         })
 
         document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', function(){
             document.getElementsByClassName('list-group')[0].classList.toggle('show')
         })
+
+        
     </script>
 </body>
 </html>
