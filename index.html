@@ -54,9 +54,11 @@
         <button type="button" class="btn btn-danger" id="close">닫기</button>
     </form>
 
-    <div>
-        <input id="삼육구" type="number">
-    </div>
+    <span class="badge bg-dark">Dark 🔄</span>
+
+    <p>태조 이성계가 태어난 년도는?</p>
+    <input type="text" id="answer">
+    <button id="send-answer">제출</button>
 
     <script>
         $('#login').on('click', function(){
@@ -70,10 +72,23 @@
             }
         })
 
-        document.getElementById('삼육구').addEventListener('input', function(number) {
-            if (number % 3 == 0) console.log("박수")
-            else console.log("통과")
-        })
+        var count = 0;
+        $('.badge').on('click', function(){
+            count += 1;
+            if (count % 2 == 1) {
+                $('.badge').html('Light 🔄');
+                $('.badge').removeClass('bg-dark');
+                $('.badge').addClass('bg-light');
+                $('.badge').removeClass('text-light');
+                $('.badge').addClass('text-dark');
+            } else {
+                $('.badge').html('Dark 🔄')
+                $('.badge').removeClass('bg-light');
+                $('.badge').addClass('bg-dark');
+                $('.badge').removeClass('text-dark');
+                $('.badge').addClass('text-light');
+            }
+        });
 
         document.getElementById('email').addEventListener('input', function(){
             console.log('안녕')
@@ -102,6 +117,32 @@
         }
 
         삼육구(9);
+
+        // 변수 
+        var 예금액 = 60000;
+        var 미래예금액 = 0;
+
+        if (예금액 < 50000) 미래예금액 = (예금액*1.15*1.15)
+        else 미래예금액 = (예금액*1.2*1.2)
+
+        console.log(미래예금액)
+
+        var first = 360;
+        var coffee = 0;
+
+        coffee = first + first*(2/3) + first*(2/3)*(2/3)
+
+        console.log(coffee);
+
+        document.querySelector('#send-answer').addEventListener('click', function(){
+            count += 1
+            var 유저답안 = document.querySelector('#answer').value;
+            if (유저답안 == '1335') {
+                alert('성공')
+            } else if (count >= 3 && 유저답안 != '1335') {
+                alert('멍청아')
+            }
+        })
     </script>
 </body>
 </html>
