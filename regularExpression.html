@@ -43,12 +43,21 @@
         console.log(/(e|f)/.test('abcde'));   // true : | 이건 or 기호. -> e 또는 f중 아무거나 한 문자가 있나 검사
 
         $('form').on('submit',function(e) {
-        var 입력한값 = document.getElementById('email').value;
-        
-        if (! /\S+@\S+\.\S+/.test(입력한값) ) {
-            alert('이메일형식아님')
-            e.preventDefault();
-        }
+            var 입력한값 = document.getElementById('email').value;
+            
+            if (! /\S+@\S+\.\S+/.test(입력한값) ) {
+                alert('이메일형식아님')
+                e.preventDefault();
+            }
+
+        // 폼 전송시 유저가 입력한 비번에 영어 대문자가 적어도 1개 있는지 검사
+            var 입력한비밀번호 = document.getElementById('password').value;
+
+            if (/[A-Z]/.test(입력한비밀번호)) {
+                alert('비밀번호에는 대문자가 포함될 수 없습니다.')
+                e.preventDefault();
+            }
+
         });
     </script>
 </body>
