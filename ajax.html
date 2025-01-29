@@ -20,22 +20,14 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-sm-4">
-          <img src="https://via.placeholder.com/600" class="w-100" />
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="https://via.placeholder.com/600" class="w-100" />
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="https://via.placeholder.com/600" class="w-100" />
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
       </div>
+    </div>
+
+    <div class="container">
+      <button class="btn btn-danger" id="more">더보기</button>
     </div>
 
     <script>
@@ -45,11 +37,7 @@
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
 
-      for (let i = 0; i < products.length; i++) {
-        document.querySelectorAll(".card-title")[i].innerHTML = products[i].title;
-        document.querySelectorAll(".card-body p")[i].innerHTML = "가격 : " + products[i].price;
-      }
-
+      // Ajax
       $.get("https://codingapple1.github.io/hello.txt")
         .done(function (data) {
           console.log(data);
@@ -66,6 +54,32 @@
         .catch(function (error) {
           console.log("실패함");
         });
+
+      // Ajax - 2
+      let click = 0;
+
+      products.forEach((a, i) => {
+        var 템플릿 = `<div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>${products[i].title}</h5>
+        <p>가격 : ${products[i].price}</p>
+      </div>`;
+        $(".row").append(템플릿);
+      });
+
+      $("#more").click(function () {
+        $.get("https://codingapple1.github.io/js/more1.json").done((data) => {
+          data.forEach((a, i) => {
+            var 템플릿 = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${data[i].title}</h5>
+            <p>가격 : ${data[i].price}</p>
+          </div>`;
+            $(".row").append(템플릿);
+            click += 1;
+          });
+        });
+      });
     </script>
   </body>
 </html>
